@@ -1,24 +1,51 @@
-import logo from './logo.svg';
+import React from 'react';
+import './assets/css/main.css'
 import './App.css';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  HttpLink,
+  from,
+} from "@apollo/client";
+import { onError } from "@apollo/client/link/error";
+import { BrowserRouter as Router, Routes, Route, BrowserRouter} from 'react-router-dom';
+
+import Navbar from "./components/Navbar"
+import Collection from './Pages/Collection';
+import Home from './Pages/Home';
+import AnimeDetail from "./Pages/AnimeDetail";
+
+const errorLink = onError(({ graphqlErrors, networkError }) => {
+  if (graphqlErrors) {
+    graphqlErrors.map(({ message, location, path }) => {
+      alert(`Graphql Error ${message}`);
+    });
+  }
+});
+
+const link = from([
+  errorLink,
+  new HttpLink({ uri: "https://graphql.anilist.co/api/v2/" }),
+]);
+
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  link: link,
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={client} className="App">
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/my-collection" element={<Collection />}/>
+          <Route path="/anime/:id" element={<AnimeDetail />}/>
+        </Routes>
+      </BrowserRouter>
+    </ApolloProvider>
   );
 }
 
