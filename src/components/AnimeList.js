@@ -2,7 +2,6 @@ import { useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { LOAD_ANIME_LIST } from "../GraphQL/Queries";
 import Card from 'react-bootstrap/Card';
-import Pagination from 'react-bootstrap/Pagination'
 import '../assets/css/main.css';
 import { Link } from 'react-router-dom';
 
@@ -36,7 +35,7 @@ function AnimeList() {
     return (
         <div className="main-head">
             <nav className="nav-page">
-                <button onClick={() => setPage((page) => page - 1)} disabled={page == 1}>Previous</button>
+                <button onClick={() => setPage((page) => page - 1)} disabled={page === 1}>Previous</button>
                 <div>Page {page}</div>
                 <button onClick={() => setPage((page) => page + 1)}>Next</button>
             </nav>

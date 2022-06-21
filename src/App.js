@@ -1,38 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './assets/css/main.css'
 import './App.css';
 import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  HttpLink,
-  from,
+  ApolloProvider
 } from "@apollo/client";
-import { onError } from "@apollo/client/link/error";
+
 import { BrowserRouter as Router, Routes, Route, BrowserRouter} from 'react-router-dom';
 
 import Navbar from "./components/Navbar"
 import Collection from './Pages/Collection';
 import Home from './Pages/Home';
 import AnimeDetail from "./Pages/AnimeDetail";
+import Login from './Pages/Login'
 
-const errorLink = onError(({ graphqlErrors, networkError }) => {
-  if (graphqlErrors) {
-    graphqlErrors.map(({ message, location, path }) => {
-      alert(`Graphql Error ${message}`);
-    });
-  }
-});
-
-const link = from([
-  errorLink,
-  new HttpLink({ uri: "https://graphql.anilist.co/api/v2/" }),
-]);
-
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  link: link,
-});
+import client from "./Api/Client"
+import Verify from './Pages/Verify';
 
 function App() {
   return (
@@ -40,9 +22,11 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/my-collection" element={<Collection />}/>
-          <Route path="/anime/:id" element={<AnimeDetail />}/>
+          <Route path="/login" element={<Login />} />
+          <Route path="/verify" element={<Verify/>}/>
+          <Route path="/home/" element={<Home />} />
+          <Route path="/my-collection/" element={<Collection />}/>
+          <Route path="/anime/:id/" element={<AnimeDetail />}/>
         </Routes>
       </BrowserRouter>
     </ApolloProvider>

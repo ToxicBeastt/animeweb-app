@@ -24,23 +24,44 @@ query($page: Int, $perPage: Int)  {
 `
 
 export const LOAD_ANIME_DETAIL = gql`
-query Page($page: Int, $perPage: Int, $mediaId: Int) {
-    Page(page: $page, perPage: $perPage) {
-      media(id: $mediaId) {
-        id
-        title {
-          english
-          native
-        }
-        coverImage {  
-          large
-        }
-        popularity
-        episodes
-        genres
-        meanScore
-        description
+query Page($mediaId: Int) {
+  Page {
+    media(id: $mediaId) {
+      id
+      title {
+        english
+        native
       }
+      coverImage {  
+        large
+      }
+      popularity
+      episodes
+      genres
+      meanScore
+      description
     }
   }
+}
+`
+export const LOAD_AUTH = gql`
+query Page($mediaId: Int) {
+  Page {
+    media(id: $mediaId) {
+      id
+      title {
+        english
+        native
+      }
+      coverImage {  
+        large
+      }
+      popularity
+      episodes
+      genres
+      meanScore
+      description
+    }
+  }
+}
 `
