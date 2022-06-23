@@ -34,6 +34,7 @@ query Page($mediaId: Int) {
       }
       coverImage {  
         large
+        medium
       }
       popularity
       episodes
@@ -44,9 +45,10 @@ query Page($mediaId: Int) {
   }
 }
 `
-export const LOAD_AUTH = gql`
-query Page($mediaId: Int) {
-  Page {
+
+export const LOAD_ONE_ANIME = gql`
+query Page($mediaId: Int, $perPage: Int, $page: Int) {
+  Page(perPage: $perPage, page: $page) {
     media(id: $mediaId) {
       id
       title {
@@ -55,6 +57,7 @@ query Page($mediaId: Int) {
       }
       coverImage {  
         large
+        medium
       }
       popularity
       episodes

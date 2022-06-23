@@ -4,6 +4,7 @@ import { LOAD_ANIME_LIST } from "../GraphQL/Queries";
 import Card from 'react-bootstrap/Card';
 import '../assets/css/main.css';
 import { Link } from 'react-router-dom';
+import React from "react";
 
 const PAGE_SIZE = 10;
 
@@ -42,10 +43,8 @@ function AnimeList() {
             <div className="grid-container">
                 {animes.map(anime => (
                     <Card className="anime-card" key={anime.id}>
-                        <Link to={'/anime/' + anime.id}>
+                        <Link to={'/anime/' + String(anime.id)} style={{ textDecoration: 'none' }}>
                             <Card.Img variant="top" src={anime.coverImage.large} className="img" />
-                        </Link>
-                        <Link to={'/anime/' + anime.id} style={{ textDecoration: 'none' }}>
                             <Card.Body>
                                 <div className="body">
                                     {anime.title.english != null &&

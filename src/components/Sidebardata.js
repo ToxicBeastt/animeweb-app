@@ -11,7 +11,7 @@ export const SidebarData = [
   },
   {
     title: 'Collection',
-    path: '/my-collection',
+    path: '/my-collections',
     icon: <IoIcons.IoIosBookmark />,
     cName: 'nav-text'
   },

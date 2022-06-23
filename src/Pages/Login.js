@@ -1,7 +1,4 @@
-import { useMutation } from "@apollo/client";
 import React from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import { SAVE_LIST_ACTIVITY } from "../GraphQL/Mutation";
 
 function Login() {
 

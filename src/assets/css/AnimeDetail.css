@@ -1,0 +1,11 @@
+.grid-genre{
+    display: grid;
+    grid-auto-flow: column;
+    width: fit-content;
+    column-gap: 8px;
+  }
+
+  .genres{
+    display: flex;
+    width: fit-content;
+  }

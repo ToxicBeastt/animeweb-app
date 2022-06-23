@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './assets/css/main.css'
 import './App.css';
 import {
@@ -11,10 +11,8 @@ import Navbar from "./components/Navbar"
 import Collection from './Pages/Collection';
 import Home from './Pages/Home';
 import AnimeDetail from "./Pages/AnimeDetail";
-import Login from './Pages/Login'
-
 import client from "./Api/Client"
-import Verify from './Pages/Verify';
+import CollectionDetail from './Pages/CollectionDetail';
 
 function App() {
   return (
@@ -22,11 +20,10 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/verify" element={<Verify/>}/>
           <Route path="/home/" element={<Home />} />
-          <Route path="/my-collection/" element={<Collection />}/>
+          <Route path="/my-collections/" element={<Collection />}/>
           <Route path="/anime/:id/" element={<AnimeDetail />}/>
+          <Route path="/collection/:collectionId/" element={<CollectionDetail/>}/>
         </Routes>
       </BrowserRouter>
     </ApolloProvider>
