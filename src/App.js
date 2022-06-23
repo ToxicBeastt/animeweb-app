@@ -20,7 +20,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/home/" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/my-collections/" element={<Collection />}/>
           <Route path="/anime/:id/" element={<AnimeDetail />}/>
           <Route path="/collection/:collectionId/" element={<CollectionDetail/>}/>
