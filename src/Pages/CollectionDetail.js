@@ -25,7 +25,6 @@ function CollectionDetail() {
             setAnimeList(result)
         }
     }, []);
-    console.log(result)
     if(result.length !== 0){
         return (
             <div className='home'>
