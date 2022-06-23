@@ -11,9 +11,6 @@ function Home() {
     <div className="home">
       <h1>Anime List</h1>
       <AnimeList />
-      <div>
-        <button onClick={reset}>Testing</button>
-      </div>
     </div>
   );
 }
