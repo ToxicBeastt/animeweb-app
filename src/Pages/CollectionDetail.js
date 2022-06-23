@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, useParams } from "react-router-dom";
-import AnimeCard from '../components/AnimeCard';
 import '../assets/css/main.css';
 import CollectionAnimeCard from '../components/CollectionAnimeCard';
-import Confimration_Remove_Anime_Popup from '../components/Confimration_Remove_Anime_Popup';
+import Confirmation_Remove_Anime_Popup from '../components/Confirmation_Remove_Anime_Popup';
 
 function CollectionDetail() {
     const { collectionId } = useParams();
@@ -31,7 +30,7 @@ function CollectionDetail() {
         return (
             <div className='home'>
                 <h1>{collectionInfo.collectionName}</h1>
-                <Confimration_Remove_Anime_Popup
+                <Confirmation_Remove_Anime_Popup
                     trigger={btnConfirmation}
                     setTrigger={setConfirmationPopup}
                     deleteId={deleteId}

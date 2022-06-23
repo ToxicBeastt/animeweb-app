@@ -1,7 +1,7 @@
 import React from 'react'
 import '../assets/css/Popup.css'
 
-function Confimration_Remove_Anime_Popup(props) {
+function Confirmation_Remove_Anime_Popup(props) {
     function deleteFromList(index) {
         var tempArr = props.animeList;
         const newArr = tempArr.filter(object => {
@@ -11,7 +11,7 @@ function Confimration_Remove_Anime_Popup(props) {
         var myJSONString = collectionList,
             myObject = JSON.parse(myJSONString);
 
-        var objIndex = myObject.findIndex((obj => obj.collectionId == props.collectionId));
+        var objIndex = myObject.findIndex((obj => obj.collectionId === props.collectionId));
         props.setAnimeList(newArr);
         myObject[objIndex].animesId = newArr;
         localStorage.setItem('collection',JSON.stringify(myObject));
@@ -37,4 +37,4 @@ function Confimration_Remove_Anime_Popup(props) {
     ) : '';
 }
 
-export default Confimration_Remove_Anime_Popup
+export default Confirmation_Remove_Anime_Popup
